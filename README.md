@@ -1,6 +1,8 @@
 # simple-iot-monitoring
 A simple nodejs server to see if your IOT (esp32, esp8266) are still alive
 
+Uddate your credentials in config/data.js
+
 Can easily be use with docker.
 
 ```
