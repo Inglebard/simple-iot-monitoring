@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body class="page_display">
+	<div class="main_content">
+		<div class="page_title"><h1 class="tcenter">Simple IOTs monitoring</h1></div>
+		<div class="listing_container_wrapper">   
+			<div class="listing_container">    
+				<%
+        for (var key in render.iotsArray) {
+					var iotObj = render.iotsArray[key]; 
+					var classLastSeen = "green_circle"; 
+
+					if(render.currentTimestamp-iotObj.lastseen > 1000*3600 )
+					{
+						classLastSeen = "yellow_circle"; 					
+					}
+
+					if(render.currentTimestamp-iotObj.lastseen > 1000*3600*24 )
+					{
+						classLastSeen = "red_circle"; 					
+					}
+					
+				%>
+          <div class="iotObj">
+						<div class="iotObj_inner">
+							<div class="name_lastseen">
+								<% if (typeof iotObj.name != "undefined"  ) { %>
+			  						<span class="name"><%= iotObj.name %></span>
+								<% } %>
+								<% if (typeof iotObj.lastseen != "undefined"  ) { %>
+										<span title="<%= new Date(iotObj.lastseen).toLocaleDateString('fr-FR'); %> <%= new Date(iotObj.lastseen).toLocaleTimeString('fr-FR'); %>" class="ib lastseen <%= classLastSeen %>"></span>
+								<% } %>    
+							</div>
+							<div class="type_location">
+							<% if (typeof iotObj.type != "undefined"  ) { %>
+		  						<span class="type ib"><%= iotObj.type %></span>
+							<% } %>
+							<% if (typeof iotObj.location != "undefined"  ) { %>
+		  						<span class="location ib"><%= iotObj.location %></span>
+							<% } %>
+							</div>
+							<% if (typeof iotObj.description != "undefined"  ) { %>
+		  						<span class="description ib w-100"><%= iotObj.description %></span>
+							<% } %>
+							<div class="actions">
+								<a class="delete ib" href="/delete/<%= key %>"></a>
+							</div>
+						</div>   
+					</div>    
+				<% } %>        
+			</div>   
+		</div>
+	</div>
+</body>
+</html>

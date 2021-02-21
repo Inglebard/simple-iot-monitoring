@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+  <body class="page_login">
+    <div class="container">
+      <% if(error_message && error_message!='' ) { %>
+      <br/>
+      <br/>
+      <div class="alert alert-danger" role="error">
+        <strong>Erreur : </strong> <%= error_message %>
+      </div>
+      <br/>
+      <br/>
+      <% } %>
+      <div class="container jumbotron">
+        <form id="formlogin" method="post">
+            <h2 class="h3 mb-3 font-weight-normal">Login</h2>
+            <label for="inputUsername" class="sr-only">Username</label>
+            <input type="text" value="" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+            <br/>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <br/>
+            <button id="submitButton" class="btn btn-lg btn-primary"  type="submit">Se Connecter</button>
+        </form>
+      </div>
+    </div>
+  </body>
+
+</html>
