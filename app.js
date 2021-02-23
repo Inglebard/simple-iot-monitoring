@@ -45,7 +45,6 @@ app.get('/logout',(req, res) => {
 
 
 app.get('/ping', (req, res) => {
-		console.log(req.query.key);
 		if(req.query.key == global_data.PING_KEY  && req.query.name)
 		{
 			var iotInfo={}
@@ -75,6 +74,8 @@ app.get('/', (req, res) => {
     var render ={};
     render.iotsArray=iotsArray;
     render.currentTimestamp=Date.now();
+    render.warning_delay=global_data.WARNING_DELAY;
+    render.error_delay=global_data.ERROR_DELAY;
   	res.render('index', {render:render});
 })
 app.get('/delete/:iotname', (req, res) => {  

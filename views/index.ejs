@@ -11,12 +11,12 @@
 					var iotObj = render.iotsArray[key]; 
 					var classLastSeen = "green_circle"; 
 
-					if(render.currentTimestamp-iotObj.lastseen > 1000*3600 )
+					if(render.currentTimestamp-iotObj.lastseen > render.warning_delay )
 					{
 						classLastSeen = "yellow_circle"; 					
 					}
 
-					if(render.currentTimestamp-iotObj.lastseen > 1000*3600*24 )
+					if(render.currentTimestamp-iotObj.lastseen > render.error_delay )
 					{
 						classLastSeen = "red_circle"; 					
 					}

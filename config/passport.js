@@ -9,13 +9,13 @@ module.exports.init = function(app)
 	passport.use(new Strategy({passReqToCallback: true},
   function(req, username, password, cb) {   
     if (global_data.USER_NAME != username) {
-			return cb(null, false, { message: 'Utilisateur ou mot de passe incorrect.' });
+			return cb(null, false, { message: 'Incorrect username or password.' });
 		}
 		bcrypt.compare(password, global_data.USER_PASSWORD, function(err, res) {
 			if(res) {
 	       return cb(null, global_data.USER_NAME);
 			} else {
-			 return cb(null, false, { message: 'Utilisateur ou mot de passe incorrect.' });
+			 return cb(null, false, { message: 'Incorrect username or password.' });
 			}
 		});
   }));
